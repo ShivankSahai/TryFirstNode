@@ -2,6 +2,7 @@ let express=require('express')
 let hbs=require('hbs')
 let fs=require('fs')
 
+let port=process.env.PORT || 3000
 let app=express()
 
 hbs.registerPartials(__dirname+'/views/partials')
@@ -51,4 +52,4 @@ app.get('/bad',(request,response)=>{
     })
 })
 
-app.listen(3000)
+app.listen(port)
