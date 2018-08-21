@@ -5,57 +5,61 @@ let fs=require('fs')
 let port=process.env.PORT || 3000
 let app=express()
 
-hbs.registerPartials(__dirname+'/views/partials')
-app.set('view engine','hbs')
-
-app.use((request,response,next)=>{
-    let now=new Date().toString()
-    let log=`${now} ${request.method} ${request.url}`
-    console.log(log)
-
-    fs.appendFileSync('server.log',log+'\n')
-
-    next()
-})
+// hbs.registerPartials(__dirname+'/views/partials')
+// app.set('view engine','hbs')
 
 // app.use((request,response,next)=>{
-//     response.render('maintenance.hbs')
+//     let now=new Date().toString()
+//     let log=`${now} ${request.method} ${request.url}`
+//     console.log(log)
+
+//     fs.appendFileSync('server.log',log+'\n')
+
+//     next()
 // })
 
-app.use(express.static(__dirname + '/public'))
+// // app.use((request,response,next)=>{
+// //     response.render('maintenance.hbs')
+// // })
 
-hbs.registerHelper('currentYear',()=>{
-    return new Date().getFullYear()
-})
-hbs.registerHelper('screamIt',(text)=>{
-    return text.toUpperCase()
-})
+// app.use(express.static(__dirname + '/public'))
+
+// hbs.registerHelper('currentYear',()=>{
+//     return new Date().getFullYear()
+// })
+// hbs.registerHelper('screamIt',(text)=>{
+//     return text.toUpperCase()
+// })
+// app.get('/',(request,response)=>{
+//     // response.send('<h1>Hello Express!</h1>')
+//     response.render('home.hbs',{
+//         hello: 'Hey there!',
+//         name:'Khalnayak',
+//         age:19,
+//         aboutPageTitle: 'Home Page',
+//     })
+// })
+
+// app.get('/about',(request,response)=>{
+//     response.render('about.hbs',{
+//         aboutPageTitle: 'About us Shivank' 
+//     })
+// })
+
+// app.get('/projects',(request,response)=>{
+//     response.render('projects.hbs',{
+//         aboutPageTitle: 'Projects Page'
+//     })
+// })
+
+// app.get('/bad',(request,response)=>{
+//     response.send({
+//         errorMessage: 'Something went wrong'
+//     })
+// })
+
 app.get('/',(request,response)=>{
-    // response.send('<h1>Hello Express!</h1>')
-    response.render('home.hbs',{
-        hello: 'Hey there!',
-        name:'Khalnayak',
-        age:19,
-        aboutPageTitle: 'Home Page',
-    })
-})
-
-app.get('/about',(request,response)=>{
-    response.render('about.hbs',{
-        aboutPageTitle: 'About us Shivank' 
-    })
-})
-
-app.get('/projects',(request,response)=>{
-    response.render('projects.hbs',{
-        aboutPageTitle: 'Projects Page'
-    })
-})
-
-app.get('/bad',(request,response)=>{
-    response.send({
-        errorMessage: 'Something went wrong'
-    })
+    response.send('Resnick paglet hai')
 })
 
 app.listen(port)
