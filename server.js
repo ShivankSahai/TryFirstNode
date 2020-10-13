@@ -59,7 +59,7 @@ let app=express()
 // })
 
 app.get('/',(request,response)=>{
-    response.send({message:'Resnick paglet hai'})
+    response.send({message:'Done'})
 })
 
 app.listen(port)
